@@ -2,7 +2,7 @@
 from crontab import CronTab
 
 #init cron
-cron = CronTab(user=True)
+cron = CronTab(user='pi')
 cron.remove_all()
 
 #add a new job
