@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 from datetime import datetime
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Markup
 from sense_hat import SenseHat
 
 app = Flask(__name__)
@@ -11,6 +11,12 @@ app = Flask(__name__)
 #log = logging.getLogger('werkzeug')
 #log.setLevel(logging.ERROR)
 
+@app.route("/testchart")
+def chart():
+    labels = ["January","February","March","April","May","June","July","August"]
+    values = [10,9,8,7,6,4,7,8]
+    return render_template('chart.html', values=values, labels=labels)
+
 def getData():
     time = datetime.now().strftime("%H:%M:%S")
     sense = SenseHat()
@@ -18,7 +24,7 @@ def getData():
     return time, temp
 
 # main route 
-@app.route("/")
+@app.route("/currenttemp")
 def index():	
 	time, temp = getData()
 	templateData = {
