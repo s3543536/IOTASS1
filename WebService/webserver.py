@@ -15,7 +15,7 @@ app = Flask(__name__)
 def chart():
     labels = ["January","February","March","April","May","June","July","August"]
     values = [10,9,8,7,6,4,7,8]
-    return render_template('chart.html', values=values, labels=labels)
+    return render_template('testchart.html', values=values, labels=labels)
 
 def getData():
     time = datetime.now().strftime("%H:%M:%S")
