@@ -12,6 +12,7 @@ temp_notify = cron.new(command='/usr/bin/python3 /home/pi/IOTASS1/notify_phone.p
 #configure job
 log_pressure.minute.every(60)
 #log_pressure.hour.every(2)
-temp_notify.minute.every(1)
+temp_notify.minute.every(60)
+temp_notify.hour.on(6)
 
 cron.write()
