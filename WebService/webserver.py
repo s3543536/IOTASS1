@@ -17,6 +17,12 @@ def chart():
     values = [10,9,8,7,6,4,7,8]
     return render_template('testchart.html', values=values, labels=labels)
 
+@app.route("/linechart")
+def linechart():
+    labels = ["January","February","March","April","May","June","July","August"]
+    values = [10,9,8,7,6,4,7,8]
+    return render_template('pressure_display.html', values=values, labels=labels)
+
 def getData():
     time = datetime.now().strftime("%H:%M:%S")
     sense = SenseHat()
