@@ -9,6 +9,7 @@ cron.remove_all()
 job = cron.new(command='/usr/bin/python3 /home/pi/IOTASS1/log_pressure.py')
 
 #configure job
-job.hour.every(1)
+job.minute.every(60)
+#job.hour.every(2)
 
 cron.write()
