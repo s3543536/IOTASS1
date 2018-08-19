@@ -12,14 +12,12 @@
 		<h1>Flask Chart.js</h1>
 		<!-- bar chart canvas element -->
 		<!-- id is used by below script -->
-		<canvas id="chart" width="600" height="400"></canvas>
+		<canvas id="chart" width="1000" height="1000"></canvas>
 
 		<script>
 		// chart data
 		var chartData = {
-		labels : [{% for item in labels %}
-						"{{item}}",
-					{% endfor %}],
+		labels : {{labels | tojson}},
 		datasets : [
 			{
 				fillColor: "rgba(151,187,205,0.2)",
@@ -29,9 +27,7 @@
 				pointHighlightFill: "#fff",
 				pointHighlightStroke: "#rgba(151,187,205,1)",
 
-				data : [{% for item in values %}
-							{{item}},
-							{% endfor %}]
+				data : {{values | tojson}}
 			}
 			]
 		}
@@ -49,8 +45,8 @@
 		// get bar chart canvas
 		var mychart = document.getElementById("chart").getContext("2d");
 		
-		steps = 10
-		max = 10
+		steps = {{numsteps}};
+		max = {{maxval}};
 		// draw bar chart
 		new Chart(mychart).Line(chartData, {
 				scaleOverride: true,
@@ -61,7 +57,7 @@
 				scaleShowGridLines : true,
 				barShowStroke : true,
 				scaleShowLabels: true,
-				bezierCurve: true
+				bezierCurve: false
 		});
 		
 		</script>
