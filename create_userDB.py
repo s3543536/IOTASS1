@@ -7,5 +7,5 @@ dbase = lite.connect('data/sensehat.db')
 with dbase:
     cur = dbase.cursor()
     cur.execute("DROP TABLE IF EXISTS users")
-    cur.execute("CREATE TABLE users(id INTEGER PRIMARY KEY, name VARCHAR(255), addr VARCHAR(20))")
+    cur.execute("CREATE TABLE users(id INTEGER PRIMARY KEY, name VARCHAR(255), phone_name VARCHAR(255))")
 
